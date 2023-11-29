@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Белый фон */
+            color: #000; /* Черный текст */
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 50px;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #000; /* Черная рамка */
+            border-radius: 5px;
+            background-color: #fff; /* Белый фон */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            text-align: left;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #000; /* Черный фон */
+            color: #fff; /* Белый текст */
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #fff; /* Белый фон при наведении */
+            color: #000; /* Черный текст при наведении */
+        }
+
+        p {
+            margin-top: 20px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Авторизация</h2>
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+        <label for="password">Пароль:</label>
+        <input type="password" name="password" required><br>
+        <input type="submit" value="Войти">
+    </form>
+</body>
+</html>
